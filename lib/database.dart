@@ -48,6 +48,12 @@ class DatabaseHelper {
     }
     await batch.commit(noResult: true);
   }
+
+  List<Quote> search( String tag){
+
+   tag = "motivational";
+
+  }
 }
 
 //

@@ -30,5 +30,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+       <service
+           android:name="com.example.localnotifications.services.LocalNotificationsService"
+           android:exported="false" />
     </application>
 </manifest>
