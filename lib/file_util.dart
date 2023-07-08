@@ -23,16 +23,20 @@ class FileUtil {
       print("First launch--------------");
       DatabaseHelper databaseHelper = DatabaseHelper();
       List<List<dynamic>> result = await readData();
-      int counter = 0;
+      double counter = 0;
       try {
-        List<Quote> quotes = [];
         for (List<dynamic> line in result) {
           counter += 1;
-          Quote quote = Quote(
-              id: counter, txt: line[0], author: line[1], category: line[2]);
-          quotes.add(quote);
+
+          if (line[0] is String) {
+            Quote quote = Quote(
+                id: counter.toInt(),
+                txt: line[0].toString(),
+                author: line[1].toString(),
+                category: line[2].toString());
+            databaseHelper.insert(quote);
+          }
         }
-        databaseHelper.bulkInsert(quotes);
       } catch (e) {
         throw Exception(e);
       }
